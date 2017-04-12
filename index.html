@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Facebook Detail Using API</title>
+	
+	<style>
+		.loader {
+			border: 20px solid #f3f3f3;
+			border-radius: 50%;
+			border-top: 16px solid blue;
+			border-bottom: 16px solid blue;
+			width: 150px;
+			height:150px;
+			-webkit-animation: spin 2s linear infinite;
+			animation: spin 2s linear infinite;
+			position: fixed;
+			left: 45%;
+			top: 35%;
+			margin: 0px 0 0 0px;
+			z-index: 1000;
+		}
+
+		@-webkit-keyframes spin {
+			0% { -webkit-transform: rotate(0deg); }
+			100% { -webkit-transform: rotate(360deg); }
+		}
+
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+	</style>
+</head>
+
+<body>
+	<!--Modal-->
+	<div id="myModal" class="modal fade in">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	                <h4 class="modal-title">Find your Facebook account details</h4>
+	            </div>
+	            <div class="modal-body">
+					<p>Enter your facebook token:</p>
+	                <form>
+	                    <div class="form-group">
+	                        <input id="txtFbToken" type="text" class="form-control" placeholder="Type fb token here">
+	                    </div>
+	                    <input id="btnShowFbDetail" type="submit" class="center-block btn btn-primary" value="Show FB details" />
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<div class="loader"></div>
+
+	<div id="FbDetail">
+		<div>
+			<center><H1>Facebook Details using FB token</H1></center>
+		</div>
+
+		<!--Tabs-->
+		<ul class="nav nav-tabs" role="tablist">
+	    	<li class="active"><a href="#divProfileDetail" aria-controls="divProfileDetail" role="tab" data-toggle="tab">Profile Details</a></li>
+	    	<li><a href="#divPost" aria-controls="divPost" role="tab" data-toggle="tab">Recent Posts</a></li>
+	  	</ul>
+
+		<div class="container">
+			<div class="tab-content">
+		  		<!--Profile Detail-->
+				<div id="divProfileDetail" class="tab-pane active">
+					<div class="row">
+						<div class="col-sm-12">
+							<h3>Name : <span id="myName"></span></h3>
+						</div>
+						<div class="col-sm-12">
+							<h3>Gender : <span id="myGender"></span></h3>
+						</div>
+						<div class="col-sm-12">
+							<h3>Birthday : <span id="myBirthday"></span></h3>
+						</div>
+						<div class="col-sm-12">
+							<h3>Hometown : <span id="myHometown"></span></h3>
+						</div>
+						<div class="col-sm-12">
+							<h3>Relationship Status : <span id="myRelStatus"></span></h3>
+						</div>
+						<div class="col-sm-12">
+							<h3>Education : <span id="myEducation"></span></h3>
+							<ol id="educationList"></ol>
+						</div>
+					</div>
+				</div>
+
+				<!--Feed Details-->
+				<div id="divPost" class="tab-pane">
+					<div class="col-sm-12">
+						<h3>Recent Posts : <span id="myPosts"></span></h3>
+						<ol id="feedsList"></ol>
+					</div>
+				</div>
+			</div><!-- end of tab-content div-->
+		</div><!-- end of container-->
+	</div>
+	
+	<!--Scripts Links-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script type="text/javascript" src="facebookDetail.js"></script>
+	
+</body>
