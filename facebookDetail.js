@@ -1,8 +1,73 @@
 $(document).ready(function() {
-    $("#myModal").modal('show');
-    $('.loader').hide();
-    $('#FbDetail').hide();
 
+    var $window = $(window);
+
+    //Functions to show & hide controls
+    function checkWidth() {
+        var windowWidthSize = $window.width();
+        var windowHeightSize = $window.height();
+        $("#divHome").width(windowWidthSize);
+        $("#divHome").height(windowHeightSize);
+        $("#imgHome").width(windowWidthSize);
+        $("#imgHome").height(windowHeightSize);
+
+        if (windowWidthSize < 420) {
+            $(".navbar-toggle").addClass('hidden-xs');
+            $("#menu-toggle").removeClass('hidden-xs');
+            $("#sidebar-wrapper").removeClass('hidden-xs');
+            if($("#wrapper").hasClass('active')){
+                $("#websiteName").removeClass('hidden-xs');
+            }
+            else{
+                $("#websiteName").addClass('hidden-xs');
+            }
+            $("#subMenu").addClass('hidden-xs');
+            $("#menubar").css('width', '50px');
+        }
+        else{
+            $(".navbar-toggle").removeClass('hidden-xs');
+            $("#menu-toggle").addClass('hidden-xs');
+            $("#sidebar-wrapper").addClass('hidden-xs');
+            $("#websiteName").removeClass('hidden-xs');
+            $("#subMenu").removeClass('hidden-xs');
+            $("#menubar").css('width', '');
+        }
+    }
+        
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+        $("#websiteName").toggleClass('hidden-xs');
+    });
+    
+    checkWidth();
+    $(window).resize(checkWidth);
+
+    //Functions to show & hide div
+    $(".lnk1").click(function() {  
+        $("#divProfileDetail").css('display', 'block');
+        $("#divPost").css('display', 'none');
+        $("#divHome").css('display', 'none');
+    });
+
+    $(".lnk2").click(function() {
+        $("#divProfileDetail").css('display', 'none');
+        $("#divPost").css('display', 'block');
+        $("#divHome").css('display', 'none');
+    });
+
+    $("#websiteName").click(function() {
+        $("#divProfileDetail").css('display', 'none');
+        $("#divPost").css('display', 'none');
+        $("#divHome").css('display', 'block');
+    });
+
+
+
+    $("#myModal").modal('show');
+    $('#divFacebookAccDetails').hide();
+    
+    //Function to get facebook acc details
     function getFacebookInfo(e){
         $("#myModal").modal('hide');
 
@@ -14,15 +79,15 @@ $(document).ready(function() {
                     console.log(response);
                     $("#myName").text(response.name);
                     $("#myGender").text(response.gender);
-                    $("#myBirthday").text(response.birthday)
-                    $("#myRelStatus").text(response.relationship_status)
+                    $("#myBirthday").text(response.birthday);
+                    $("#myRelStatus").text(response.relationship_status);
                     $("#myHometown").text(response.hometown.name);
                     jQuery.each(response.education,function(i, val) {
-                        $("#educationList").append('<h3><li>'+val.school.name)+'</li></h3>'
+                        $("#educationList").append('<li>'+val.school.name+'</li>');
                     });
                     jQuery.each(response.feed.data,function(i, val) {
                         if(typeof(val.message) != "undefined"){
-                            $("#feedsList").append('<h3><li>'+val.message)+'</li></h3>'
+                            $("#feedsList").append('<li>'+val.message+'</li>');
                         }
                     });
                 },// sucess function
@@ -36,13 +101,11 @@ $(document).ready(function() {
                 timeout:3000,// 3 seconds
 
                 beforeSend : function(){
-                    $('.loader').show();
-                    $('#FbDetail').hide();
+                    $('#divFacebookAccDetails').hide();
                 },// beforeSend function
 
                 complete : function(){
-                    $('.loader').hide();
-                    $('#FbDetail').show();
+                    $('#divFacebookAccDetails').show();
                 }// complete function
 
             }//end argument list 
@@ -51,5 +114,5 @@ $(document).ready(function() {
         e.preventDefault();
     }// end getFacebookInfo() function
 
-    $("#btnShowFbDetail").on('click',getFacebookInfo)
+    $("#btnShowFbDetail").on('click',getFacebookInfo);
 });

@@ -1,46 +1,18 @@
 <!DOCTYPE html>
+<html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Facebook Detail Using API</title>
-	
-	<style>
-		.loader {
-			border: 20px solid #f3f3f3;
-			border-radius: 50%;
-			border-top: 16px solid blue;
-			border-bottom: 16px solid blue;
-			width: 150px;
-			height:150px;
-			-webkit-animation: spin 2s linear infinite;
-			animation: spin 2s linear infinite;
-			position: fixed;
-			left: 45%;
-			top: 35%;
-			margin: 0px 0 0 0px;
-			z-index: 1000;
-		}
-
-		@-webkit-keyframes spin {
-			0% { -webkit-transform: rotate(0deg); }
-			100% { -webkit-transform: rotate(360deg); }
-		}
-
-		@keyframes spin {
-			0% { transform: rotate(0deg); }
-			100% { transform: rotate(360deg); }
-		}
-	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
+<body style="background-color: #3b5998;">
 	<!--Modal-->
 	<div id="myModal" class="modal fade in">
 	    <div class="modal-dialog">
 	        <div class="modal-content">
 	            <div class="modal-header">
 	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	                <h4 class="modal-title">Find your Facebook account details</h4>
+	                <p class="modal-title">Find your Facebook account details</p>
 	            </div>
 	            <div class="modal-body">
 					<p>Enter your facebook token:</p>
@@ -55,61 +27,94 @@
 	    </div>
 	</div>
 
-	<div class="loader"></div>
+	<div id="divFacebookAccDetails">
+		<div id="wrapper">
+			<nav id="menubar"  class="navbar navbar-inverse navbar-fixed-top">
+		  		<div class="container-fluid">
+		    		<div class="navbar-header">
+		      			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navbar">
+		        			<span class="icon-bar"></span>
+			        		<span class="icon-bar"></span>
+			        		<span class="icon-bar"></span>                        
+		      			</button>
 
-	<div id="FbDetail">
-		<div>
-			<center><H1>Facebook Details using FB token</H1></center>
-		</div>
+						<div  class="navbar-brand">
+		                    <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify hidden-lg hidden-md hidden-sm hidden-xs"></a>
+		    				<a id="websiteName" href="#">Facebook</a>
+		                </div>
+		    		</div>
+		    		<div class="collapse navbar-collapse" id="myNavbar">
+				      	<ul id="subMenu" class="nav navbar-nav">
+				        	<li><a class="lnk1" href="#divProfileDetail">Profile</a></li>
+				        	<li><a class="lnk2" href="#divPost">Posts</a></li>
+		      			</ul>
+		    		</div>
+		  		</div>
+			</nav>
+			<div id="sidebar-wrapper" class="hidden-lg hidden-md hidden-sm hidden-xs">
+		        <nav id="spy">
+		            <ul class="sidebar-nav nav">
+		                <li>
+		                    <a class="lnk1" href="#divProfileDetail">
+		                        <span class="fa fa-anchor solo">Profile</span>
+		                    </a>
+		                </li>
+		                <li>
+		                    <a class="lnk2" href="#divPost">
+		                        <span class="fa fa-anchor solo">Posts</span>
+		                    </a>
+		                </li>
+		            </ul>
+		        </nav>
+		    </div>
+	    </div>
 
-		<!--Tabs-->
-		<ul class="nav nav-tabs" role="tablist">
-	    	<li class="active"><a href="#divProfileDetail" aria-controls="divProfileDetail" role="tab" data-toggle="tab">Profile Details</a></li>
-	    	<li><a href="#divPost" aria-controls="divPost" role="tab" data-toggle="tab">Recent Posts</a></li>
-	  	</ul>
-
-		<div class="container">
-			<div class="tab-content">
-		  		<!--Profile Detail-->
-				<div id="divProfileDetail" class="tab-pane active">
-					<div class="row">
-						<div class="col-sm-12">
-							<h3>Name : <span id="myName"></span></h3>
-						</div>
-						<div class="col-sm-12">
-							<h3>Gender : <span id="myGender"></span></h3>
-						</div>
-						<div class="col-sm-12">
-							<h3>Birthday : <span id="myBirthday"></span></h3>
-						</div>
-						<div class="col-sm-12">
-							<h3>Hometown : <span id="myHometown"></span></h3>
-						</div>
-						<div class="col-sm-12">
-							<h3>Relationship Status : <span id="myRelStatus"></span></h3>
-						</div>
-						<div class="col-sm-12">
-							<h3>Education : <span id="myEducation"></span></h3>
-							<ol id="educationList"></ol>
-						</div>
+	    <div id="divHome">
+	    	<img id="imgHome" class="img-responsive" src="home.jpg"/>
+	    </div>
+	    
+	    <div id="divProfileDetail">
+		    <div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<p>Name : <span id="myName"></span></p>
+					</div>
+					<div class="col-sm-12">
+						<p>Gender : <span id="myGender"></span></p>
+					</div>
+					<div class="col-sm-12">
+						<p>Birthday : <span id="myBirthday"></span></p>
+					</div>
+					<div class="col-sm-12">
+						<p>Hometown : <span id="myHometown"></span></p>
+					</div>
+					<div class="col-sm-12">
+						<p>Relationship Status : <span id="myRelStatus"></span></p>
+					</div>
+					<div class="col-sm-12">
+						<p>Education : <span id="myEducation"></span></p>
+						<ol id="educationList"></ol>
 					</div>
 				</div>
+			</div>
+		</div>
 
-				<!--Feed Details-->
-				<div id="divPost" class="tab-pane">
+		<div id="divPost">
+			<div class="container">
+				<div class="row">
 					<div class="col-sm-12">
-						<h3>Recent Posts : <span id="myPosts"></span></h3>
+						<p>Recent Posts : <span id="myPosts"></span></p>
 						<ol id="feedsList"></ol>
 					</div>
 				</div>
-			</div><!-- end of tab-content div-->
-		</div><!-- end of container-->
+			</div>
+		</div>
 	</div>
-	
-	<!--Scripts Links-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="app.css">
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   	<script type="text/javascript" src="facebookDetail.js"></script>
-	
 </body>
+</html>

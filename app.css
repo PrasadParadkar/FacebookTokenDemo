@@ -1,0 +1,143 @@
+#wrapper {
+  padding-left: 0px;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+  margin-left: -250px;
+  left: 250px;
+  width: 250px;
+  background: #000;
+  position: fixed;
+  height: 180px;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+#wrapper.active {
+  padding-left: 0;
+}
+
+#wrapper.active #sidebar-wrapper {
+  left: 0;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  list-style: none;
+  margin: 50px;
+  padding: 0px;
+}
+
+.sidebar-nav li {
+  line-height: 40px;
+}
+
+.sidebar-nav li a {
+  color: #999999;
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar-nav li a span:before {
+  position: absolute;
+  left: 0;
+  color: #41484c;
+  text-align: center;
+  width: 20px;
+  line-height: 18px;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li.active {
+  color: #fff;
+  background: black;
+  text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+#menu-toggle {
+    text-decoration: none;
+    float: left;
+    color: #fff;
+    padding-right: 15px;
+}
+
+#navbar-toggle{
+  float: right;
+
+}
+
+#divHome{
+  height: 100%;
+  width: 100%;
+  /*background: url("home.jpg") no-repeat center;*/
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+#divProfileDetail,#divPost{
+  display: none;
+  padding-top: 60px;
+  color: white;
+}
+
+#divProfileDetail p, #divPost p{
+  font-size: 2vmax;
+}
+
+#educationList li, #feedsList{
+  font-size: 1.5vmax;
+}
+
+.modal-header p{
+  font-size: 2vmax;
+}
+
+.modal-body p{
+  font-size: 1.4vmax;
+}
+
+#btnShowFbDetail, #txtFbToken{
+  font-size: 1vmax;
+}
+
+@media screen and (max-width:767px) {
+  #wrapper {
+    padding-left: 0px;
+  }
+
+  #sidebar-wrapper {
+    left: 0;
+  }
+
+  #wrapper.active {
+    position: relative;
+    left: 0px;
+  }
+
+  #wrapper.active #sidebar-wrapper {
+    left: 250px;
+    width: 170px;
+    transition: all 0.4s ease 0s;
+  }
+
+  #menu-toggle {
+    display: inline-block;
+  }
+
+  .navbar-brand{
+    width: 180px;
+    transition: all 0.4s ease 0s;
+  }
+}
