@@ -39,6 +39,11 @@ $(document).ready(function() {
         $("#wrapper").toggleClass("active");
         $("#websiteName").toggleClass('hidden-xs');
     });
+
+    $("#websiteName").click(function() {
+        $("#wrapper").toggleClass("active");
+        $("#websiteName").toggleClass('hidden-xs');
+    });
     
     checkWidth();
     $(window).resize(checkWidth);
@@ -48,12 +53,16 @@ $(document).ready(function() {
         $("#divProfileDetail").css('display', 'block');
         $("#divPost").css('display', 'none');
         $("#divHome").css('display', 'none');
+        $("#wrapper").toggleClass("active");
+        $("#websiteName").toggleClass('hidden-xs');
     });
 
     $(".lnk2").click(function() {
         $("#divProfileDetail").css('display', 'none');
         $("#divPost").css('display', 'block');
         $("#divHome").css('display', 'none');
+        $("#wrapper").toggleClass("active");
+        $("#websiteName").toggleClass('hidden-xs');
     });
 
     $("#websiteName").click(function() {
